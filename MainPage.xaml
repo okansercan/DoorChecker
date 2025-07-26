@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoorChecker.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Picker x:Name="pckLocation" Title="Select a location">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Location A</x:String>
+                        <x:String>Location B</x:String>
+                        <x:String>Location C</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            
+            <Picker x:Name="pckDoor" Title="Select a door">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Door 1</x:String>
+                        <x:String>Door 2</x:String>
+                        <x:String>Door 3</x:String>
+                        <x:String>Door 4</x:String>
+                        <x:String>Door 5</x:String>
+                        <x:String>Door 6</x:String>
+                        <x:String>Door 7</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Grid RowDefinitions="Auto"
+                  ColumnDefinitions="Auto, Auto, Auto"
+                  Padding="10">
+                <Label Text="Reader IN A0033 Prox or Pin?" 
+                       Grid.Column="0" VerticalTextAlignment="Center" />
+                <RadioButton Content="Prox" GroupName="reader" Grid.Column="1" />
+                <RadioButton Content="Pin" GroupName="reader" Grid.Column="2" />
+            </Grid>
+
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                  ColumnDefinitions="Auto, Auto, Auto, Auto"
+                  Padding="10">
+                <CheckBox x:Name="chkDoorCheck1" 
+                          Grid.Row="0" Grid.Column="0" />
+                <Label Text="Is the reader secure?" 
+                       Grid.Row="0" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck2" 
+                          Grid.Row="0" Grid.Column="2" />
+                <Label Text="Is the 'A' number on top of the reader/back-box?" 
+                       Grid.Row="0" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck3" 
+                          Grid.Row="1" Grid.Column="0" />
+                <Label Text="Is there anti-pass configured for the door?" 
+                       Grid.Row="1" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck4" 
+                          Grid.Row="1" Grid.Column="2" />
+                <Label Text="Does the LED work on the reader?" 
+                       Grid.Row="1" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck5" 
+                          Grid.Row="2" Grid.Column="0" />
+                <Label Text="Does the push to exit button releasing door" 
+                       Grid.Row="2" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck6" 
+                          Grid.Row="2" Grid.Column="2" />
+                <Label Text="Is there BGU for the door?" 
+                       Grid.Row="2" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck7" 
+                          Grid.Row="3" Grid.Column="0" />
+                <Label Text="Is Lock secure?" 
+                       Grid.Row="3"  Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck8" 
+                          Grid.Row="3" Grid.Column="2" />
+                <Label Text="Anti-pass back feature work correctly?" 
+                       Grid.Row="3" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck9" 
+                          Grid.Row="4" Grid.Column="0" />
+                <Label Text="Is REX in good condition?" 
+                       Grid.Row="4" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck10" 
+                          Grid.Row="4" Grid.Column="2" />
+                <Label Text="Is BGU releases the door?" 
+                       Grid.Row="4" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck11" 
+                          Grid.Row="5" Grid.Column="0" />
+                <Label Text="Does the door have a door closer?" 
+                       Grid.Row="5" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck12" 
+                          Grid.Row="5" Grid.Column="2" />
+                <Label Text="Any defects on the door itself?" 
+                       Grid.Row="5" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+
+                <CheckBox x:Name="chkDoorCheck13" 
+                          Grid.Row="6" Grid.Column="0" />
+                <Label Text="Does the door have a door closer?" 
+                       Grid.Row="6" Grid.Column="1" 
+                       VerticalTextAlignment="Center" />
+                <CheckBox x:Name="chkDoorCheck14" 
+                          Grid.Row="6" Grid.Column="2" />
+                <Label Text="Anti-pass back feature work correctly?" 
+                       Grid.Row="6" Grid.Column="3" 
+                       VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Generate PDF Form" 
+                SemanticProperties.Hint="Generates PDF Form"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
