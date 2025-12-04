@@ -12,7 +12,6 @@ public static class MauiProgram
             .UseDevExpressCollectionView()
             .UseDevExpressControls()
             .UseDevExpressEditors()
-            .UseDevExpressDataGrid()
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {

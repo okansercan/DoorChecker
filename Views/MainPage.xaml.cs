@@ -1,24 +1,21 @@
-﻿namespace DoorChecker
+﻿using DoorChecker.Models;
+
+namespace DoorChecker
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        readonly MainViewModel viewModel;
 
         public MainPage()
         {
             InitializeComponent();
+            viewModel = new MainViewModel();
+            BindingContext = viewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        void OnSubmitClicked(Object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            DisplayAlert("OK", "PDF generated successfully", "OK");
         }
     }
 
