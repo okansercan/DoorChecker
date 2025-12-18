@@ -12,10 +12,10 @@ namespace DoorChecker.Models
         {
             CheckItems = new List<CheckItem>();
             this.database = database;
-            LoadCheckItems();
+            Task.Run(async () => await LoadCheckItems());
         }
 
-        private async void LoadCheckItems()
+        private async Task LoadCheckItems()
         {
             var items = await database.GetCheckLogsAsync();
             CheckItems.Clear();

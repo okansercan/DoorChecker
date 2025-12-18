@@ -25,6 +25,8 @@ namespace DoorChecker.Data
 
         private async void InitLocations()
         {
+            await database.DeleteAllAsync<Models.Location>();
+
             List<Models.Location> locations = new List<Models.Location>()
             {
                 new Models.Location() { Name = "Headquarters" },
@@ -40,6 +42,8 @@ namespace DoorChecker.Data
 
         private async void InitDoors()
         {
+            await database.DeleteAllAsync<Door>();
+
             List<Door> doors = new List<Door>()
             {
                 new Door() { Name = "Door H1", LocationID = 1 },
@@ -58,6 +62,8 @@ namespace DoorChecker.Data
 
         private async void InitCheckLogs()
         {
+            await database.DeleteAllAsync<CheckLog>();
+
             List<CheckLog> logs = new List<CheckLog>()
             {
                 new CheckLog() { CheckDate = DateTime.Today.AddDays(-2), Username = "Okan", DoorID = 1, Check1 = true, Check4 = true },

@@ -29,14 +29,16 @@ namespace DoorChecker.Models
         public CheckItemViewModel(DoorCheckDatabase database, int checkLogID)
         {
             this.database = database;
-            LoadCheckItem(checkLogID);
-            LoadCombos();
+            Task.Run(async () => await LoadCheckItem(checkLogID)); 
         }
 
-        private async void LoadCheckItem(int checkLogID)
+        private async Task LoadCheckItem(int checkLogID)
         {
             if (checkLogID == 0)
+            {
+                await LoadCombos();
                 return;
+            }
 
             var item = await database.GetCheckLogAsync(checkLogID);
             var door = await database.GetDoorAsync(item.DoorID);
@@ -58,9 +60,10 @@ namespace DoorChecker.Models
             this.Check11 = item.Check11;
             this.Check12 = item.Check12;
 
+            await LoadCombos();
         }
 
-        private async void LoadCombos()
+        private async Task LoadCombos()
         {
             var locations = await database.GetLocationsAsync();
             var doors = await database.GetDoorsByLocationAsync(Location);

@@ -17,9 +17,9 @@
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedItem}">
             <dx:DataGridView.Columns>
-                <dx:ImageColumn FieldName="CheckDate" Caption="Check Date"  
+                <dx:TextColumn FieldName="CheckDate" Caption="Check Date"  
                     Width="150" VerticalContentAlignment="Center"/>
-                <dx:ImageColumn FieldName="Username" Caption="User Name"  
+                <dx:TextColumn FieldName="Username" Caption="User Name"  
                     Width="150" VerticalContentAlignment="Center"/>
                 <dx:TextColumn FieldName="LocationName" Caption="Location" 
                     MinWidth="150" VerticalContentAlignment="Center" />
