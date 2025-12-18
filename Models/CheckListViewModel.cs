@@ -18,26 +18,23 @@ namespace DoorChecker.Models
         private async void LoadCheckItems()
         {
             var items = await database.GetCheckLogsAsync();
-            MainThread.BeginInvokeOnMainThread(() =>
+            CheckItems.Clear();
+            foreach (var item in items)
             {
-                CheckItems.Clear();
-                foreach (var item in items)
+                var door = await database.GetDoorAsync(item.DoorID);
+                var location = await database.GetLocationAsync(door.LocationID);
+
+                var checkItem = new CheckItem
                 {
-                    var door = database.GetDoorAsync(item.DoorID).Result;
-                    var location = database.GetLocationAsync(door.LocationID).Result;
+                    ID = item.ID,
+                    CheckDate = item.CheckDate.ToString("yyyy-MM-dd"),
+                    Username = item.Username,
+                    LocationName = location.Name,
+                    DoorName = door.Name
+                };
 
-                    var checkItem = new CheckItem
-                    {
-                        ID = item.ID,
-                        CheckDate = item.CheckDate.ToString("yyyy-MM-dd"),
-                        Username = item.Username,
-                        LocationName = location.Name,
-                        DoorName = door.Name
-                    };
-
-                    CheckItems.Add(checkItem);
-                }
-            });
+                CheckItems.Add(checkItem);
+            }
         }
     }
 

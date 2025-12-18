@@ -39,26 +39,25 @@ namespace DoorChecker.Models
                 return;
 
             var item = await database.GetCheckLogAsync(checkLogID);
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                var door = database.GetDoorAsync(item.DoorID).Result;
-                var location = database.GetLocationAsync(door.LocationID).Result;
-                this.ID = item.ID;
-                this.Location = location.ID;
-                this.Door = door.ID;
-                this.Check1 = item.Check1;
-                this.Check2 = item.Check2;
-                this.Check3 = item.Check3;
-                this.Check4 = item.Check4;
-                this.Check5 = item.Check5;
-                this.Check6 = item.Check6;
-                this.Check7 = item.Check7;
-                this.Check8 = item.Check8;
-                this.Check9 = item.Check9;
-                this.Check10 = item.Check10;
-                this.Check11 = item.Check11;
-                this.Check12 = item.Check12;
-            });
+            var door = await database.GetDoorAsync(item.DoorID);
+            var location = await database.GetLocationAsync(door.LocationID);
+
+            this.ID = item.ID;
+            this.Location = location.ID;
+            this.Door = door.ID;
+            this.Check1 = item.Check1;
+            this.Check2 = item.Check2;
+            this.Check3 = item.Check3;
+            this.Check4 = item.Check4;
+            this.Check5 = item.Check5;
+            this.Check6 = item.Check6;
+            this.Check7 = item.Check7;
+            this.Check8 = item.Check8;
+            this.Check9 = item.Check9;
+            this.Check10 = item.Check10;
+            this.Check11 = item.Check11;
+            this.Check12 = item.Check12;
+
         }
 
         private void LoadCombos()

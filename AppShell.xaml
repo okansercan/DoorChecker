@@ -8,7 +8,7 @@
     Title="Door Checker">
 
     <ShellContent
-        Title="Door Maintenance Form"
+        Title="Door Maintenance Application"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
