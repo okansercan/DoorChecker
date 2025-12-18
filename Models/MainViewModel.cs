@@ -1,46 +1,39 @@
-﻿using AndroidX.Lifecycle;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Android.App.Assist.AssistStructure;
-
-namespace DoorChecker.Models
+﻿namespace DoorChecker.Models
 {
     public class MainViewModel
     {
-        public string Location { get; set; }
-        public string Door { get; set; }
-        public bool Check1 { get; set; }
-        public bool Check2 { get; set; }
-        public bool Check3 { get; set; }
-        public bool Check4 { get; set; }
-        public bool Check5 { get; set; }
-        public bool Check6 { get; set; }
-        public bool Check7 { get; set; }
-        public bool Check8 { get; set; }
-        public bool Check9 { get; set; }
-        public bool Check10 { get; set; }
-        public bool Check11 { get; set; }
-        public bool Check12 { get; set; }
-        public IList<string> Locations { get; }
-        public IList<string> Doors { get; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ErrorText { get; set; }
 
         public MainViewModel()
         {
-            Locations = new List<string>
+            Username = string.Empty;
+            Password = string.Empty;
+            ErrorText = string.Empty;
+        }
+
+        public bool Validate()
+        {
+            if (string.IsNullOrEmpty(Username))
             {
-                "Location A",
-                "Location B",
-                "Location C"
-            };
-            Doors = new List<string>
+                ErrorText = "Username is required";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(Password))
             {
-                "Door 1",
-                "Door 2",
-                "Door 3"
-            };
-        }     
+                ErrorText = "Password is required";
+                return false;
+            }
+
+            if (Password.Length < 5 || Password != "12345")
+            {
+                ErrorText = "Invalid username/password";
+                return false;
+            }
+
+            return true;
+        }
     }
 }

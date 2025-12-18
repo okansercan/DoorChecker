@@ -5,6 +5,8 @@
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(CheckListPage), typeof(CheckListPage));
+            Routing.RegisterRoute(nameof(CheckItemPage), typeof(CheckItemPage));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevExpress.Maui;
+using DoorChecker.Data;
 
 namespace DoorChecker;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
             .UseDevExpressCollectionView()
             .UseDevExpressControls()
             .UseDevExpressEditors()
+            .UseDevExpressDataGrid()
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
@@ -19,6 +21,10 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-		return builder.Build();
+        builder.Services.AddSingleton<CheckListPage>();
+        builder.Services.AddTransient<CheckItemPage>();
+        builder.Services.AddSingleton<DoorCheckDatabase>();
+
+        return builder.Build();
 	}
 }

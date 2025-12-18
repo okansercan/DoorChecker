@@ -13,7 +13,7 @@
 		<ApplicationTitle>Door Checker</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.doorchecker</ApplicationId>
+		<ApplicationId>com.twinsoft.doorchecker</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -45,10 +45,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="DevExpress.Maui.DataGrid" Version="25.1.7" />
 		<PackageReference Include="DevExpress.Maui.Editors" Version="25.1.7" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\CheckListPage.xaml.cs">
+	    <DependentUpon>CheckListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\CheckItemPage.xaml.cs">
+	    <DependentUpon>CheckItemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\CheckListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CheckItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

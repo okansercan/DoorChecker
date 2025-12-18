@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             x:Class="DoorChecker.CheckItemPage"
+             Title="Door Maintenance Form">
+
+    <Grid RowDefinitions=".10*, .10*, .60*, .20*, .10*"
+          ColumnDefinitions=".50*, .50*"
+          BackgroundColor="DarkBlue"
+          Padding="10">
+
+        <dx:ComboBoxEdit
+            Grid.Row="0" 
+            Grid.Column="0" 
+            LabelText="Select a location"
+            TextColor="White"
+            LabelColor="White"
+            SelectedItem="{Binding Location}"
+            ItemsSource="{Binding Locations}"
+            DisplayMember="Name"
+            ValueMember="ID"            
+            ReserveBottomTextLine="True"
+            Margin="20,0,20,0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            IsFilterEnabled="True"
+            FilterCondition="Contains"
+            FilterComparisonType="CurrentCultureIgnoreCase"/>
+
+        <dx:ComboBoxEdit
+            Grid.Row="0" 
+            Grid.Column="1" 
+            LabelText="Select a door"
+            TextColor="White"
+            LabelColor="White"
+            SelectedItem="{Binding Door}"
+            ItemsSource="{Binding Doors}"
+            DisplayMember="Name"
+            ValueMember="ID"
+            ReserveBottomTextLine="True"
+            Margin="20,0,20,0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            IsFilterEnabled="True"
+            FilterCondition="Contains"
+            FilterComparisonType="CurrentCultureIgnoreCase"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2"
+              RowDefinitions="Auto"
+              ColumnDefinitions="Auto, Auto, Auto"
+              Padding="10">
+            
+            <Label 
+                Grid.Column="0" 
+                Text="Reader IN A0033 Prox or Pin?" 
+                TextColor="White"    
+                VerticalTextAlignment="Center" />
+            
+            <RadioButton 
+                Grid.Column="1"
+                Content="Prox" 
+                GroupName="reader"
+                TextColor="White"/>
+            
+            <RadioButton 
+                Grid.Column="2"
+                Content="Pin" 
+                GroupName="reader"
+                TextColor="White"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2"
+            RowDefinitions=".15*, .15*, .15*, .15*, .15*, .20*"
+            ColumnDefinitions=".50*, .50*">
+
+            <dx:CheckEdit 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is the reader secure?"
+                IsChecked="{Binding Check1}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="0" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is the 'A' number on top of the reader/back-box?"
+                IsChecked="{Binding Check2}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is there anti-pass configured for the door?"
+                IsChecked="{Binding Check3}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Does the LED work on the reader?"
+                IsChecked="{Binding Check4}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Does the push to exit button releasing door"
+                IsChecked="{Binding Check5}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="2" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is there BGU for the door?"
+                IsChecked="{Binding Check6}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="3" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is Lock secure?"
+                IsChecked="{Binding Check7}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="3" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Anti-pass back feature work correctly?"
+                IsChecked="{Binding Check8}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="4" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is REX in good condition?"
+                IsChecked="{Binding Check9}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="4" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Is BGU releases the door?"
+                IsChecked="{Binding Check10}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="5" 
+                Grid.Column="0" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Does the door have a door closer?"
+                IsChecked="{Binding Check11}"/>
+
+            <dx:CheckEdit 
+                Grid.Row="5" 
+                Grid.Column="1" 
+                CheckBoxColor="White"
+                LabelColor="White"
+                Label="Any defects on the door itself?"
+                IsChecked="{Binding Check12}"/>
+        </Grid>
+
+        <dx:DXButton 
+            Grid.Row="4" Grid.Column="1"
+            Margin="0,10,0,0"
+            Content="Generate PDF Form"
+            Clicked="OnSubmitClicked"
+            FontAttributes="Bold"
+            BackgroundColor="White"
+            TextColor="DarkBlue"
+            HorizontalOptions="End"/>
+    </Grid>
+</ContentPage>
