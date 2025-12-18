@@ -16,7 +16,8 @@
             LabelText="Select a location"
             TextColor="White"
             LabelColor="White"
-            SelectedItem="{Binding Location}"
+            PlaceholderColor="White"
+            SelectedValue="{Binding LocationID}"
             ItemsSource="{Binding Locations}"
             DisplayMember="Name"
             ValueMember="ID"            
@@ -34,7 +35,8 @@
             LabelText="Select a door"
             TextColor="White"
             LabelColor="White"
-            SelectedItem="{Binding Door}"
+            PlaceholderColor="White"
+            SelectedValue="{Binding DoorID}"
             ItemsSource="{Binding Doors}"
             DisplayMember="Name"
             ValueMember="ID"
@@ -171,14 +173,101 @@
                 IsChecked="{Binding Check12}"/>
         </Grid>
 
-        <dx:DXButton 
-            Grid.Row="4" Grid.Column="1"
-            Margin="0,10,0,0"
-            Content="Generate PDF Form"
-            Clicked="OnSubmitClicked"
-            FontAttributes="Bold"
-            BackgroundColor="White"
-            TextColor="DarkBlue"
-            HorizontalOptions="End"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2"
+              RowDefinitions=".50*, .50*"
+              ColumnDefinitions=".30*, .30*, .30*">
+
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Reader In"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="1"
+                Margin="0,10,0,0"
+                Content="Lock 1"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="2"
+                Margin="0,10,0,0"
+                Content="BGU"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+
+            <dx:DXButton 
+                Grid.Row="1" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Reader Out"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+
+            <dx:DXButton 
+                Grid.Row="1" Grid.Column="1"
+                Margin="0,10,0,0"
+                Content="Lock 2"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+
+            <dx:DXButton 
+                Grid.Row="1" Grid.Column="2"
+                Margin="0,10,0,0"
+                Content="RTE"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Start"/>
+        </Grid>
+        
+        <Grid Grid.Row="4" Grid.Column="1"
+              RowDefinitions="Auto"
+              ColumnDefinitions=".30*, .30*, .30*">
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Update"
+                Clicked="OnSaveClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="End"/>
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="1"
+                Margin="0,10,0,0"
+                Content="Delete"
+                Clicked="OnDeleteClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="End"/>
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="2"
+                Margin="0,10,0,0"
+                Content="Cancel"
+                Clicked="OnCancelClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="End"/>
+        </Grid>
     </Grid>
 </ContentPage>

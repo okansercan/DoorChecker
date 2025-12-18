@@ -7,8 +7,8 @@ namespace DoorChecker.Models
         private DoorCheckDatabase database;
 
         public int ID { get; set; }
-        public int Location { get; set; }
-        public int Door { get; set; }
+        public int LocationID { get; set; }
+        public int DoorID { get; set; }
         public bool Check1 { get; set; }
         public bool Check2 { get; set; }
         public bool Check3 { get; set; }
@@ -29,7 +29,7 @@ namespace DoorChecker.Models
         public CheckItemViewModel(DoorCheckDatabase database, int checkLogID)
         {
             this.database = database;
-            Task.Run(async () => await LoadCheckItem(checkLogID)); 
+            Task.Run(() => LoadCheckItem(checkLogID)).Wait(); 
         }
 
         private async Task LoadCheckItem(int checkLogID)
@@ -45,8 +45,8 @@ namespace DoorChecker.Models
             var location = await database.GetLocationAsync(door.LocationID);
 
             this.ID = item.ID;
-            this.Location = location.ID;
-            this.Door = door.ID;
+            this.LocationID = location.ID;
+            this.DoorID = door.ID;
             this.Check1 = item.Check1;
             this.Check2 = item.Check2;
             this.Check3 = item.Check3;
@@ -66,7 +66,7 @@ namespace DoorChecker.Models
         private async Task LoadCombos()
         {
             var locations = await database.GetLocationsAsync();
-            var doors = await database.GetDoorsByLocationAsync(Location);
+            var doors = await database.GetDoorsByLocationAsync(LocationID);
             Locations = locations;
             Doors = doors;
 

@@ -6,16 +6,17 @@
              Title="Door Maintenance List">
 
     <Grid Grid.Row="1" Grid.Column="0"
-              RowDefinitions="Auto"
-              ColumnDefinitions=".90*, .10*"
-              BackgroundColor="DarkBlue"
-              Padding="10">
+          RowDefinitions="Auto"
+          ColumnDefinitions=".90*, .10*"
+          BackgroundColor="DarkBlue"
+          Padding="10">
 
-        <dx:DataGridView ItemsSource="{Binding CheckItems}"
-                Grid.Row="0" Grid.Column="0" 
-                BackgroundColor="DarkBlue"
-                SelectionMode="Single"
-                SelectedItem="{Binding SelectedItem}">
+        <dx:DataGridView 
+            ItemsSource="{Binding CheckItems}"
+            Grid.Row="0" Grid.Column="0" 
+            BackgroundColor="DarkBlue"
+            SelectionMode="Single"
+            SelectedItem="{Binding SelectedItem}">
             <dx:DataGridView.Columns>
                 <dx:TextColumn FieldName="CheckDate" Caption="Check Date"  
                     Width="150" VerticalContentAlignment="Center"/>
@@ -39,29 +40,30 @@
         </dx:DataGridView>
 
         <Grid Grid.Row="0" Grid.Column="1"
-                RowDefinitions="Auto, Auto, Auto"
-                ColumnDefinitions="*"
-                HorizontalOptions="End"
-                VerticalOptions="Start">
+              RowDefinitions="Auto, Auto, Auto"
+              ColumnDefinitions="*"
+              HorizontalOptions="End"
+              VerticalOptions="Start">
 
             <dx:DXButton 
-                    Grid.Row="0" Grid.Column="0"
-                    Margin="0,10,0,0"
-                    Content="Add New"
-                    Clicked="OnAddNewClicked"
-                    FontAttributes="Bold"
-                    BackgroundColor="White"
-                    TextColor="DarkBlue"
-                    HorizontalOptions="Fill"/>
+                Grid.Row="0" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Add New"
+                Clicked="OnAddNewClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="Fill"/>
+            
             <dx:DXButton 
-                    Grid.Row="1" Grid.Column="0"
-                    Margin="0,10,0,0"
-                    Content="Update"
-                    Clicked="OnUpdateClicked"
-                    FontAttributes="Bold"
-                    BackgroundColor="White"
-                    TextColor="DarkBlue"
-                    HorizontalOptions="Fill"/>
+                Grid.Row="1" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Update"
+                Clicked="OnUpdateClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="Fill"/>
         </Grid>
     </Grid>
 </ContentPage>

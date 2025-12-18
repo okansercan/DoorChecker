@@ -16,6 +16,11 @@ namespace DoorChecker
             this.database = database;
         }
 
+        protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
+        }
+
         void OnAddNewClicked(Object sender, EventArgs e)
         {
             Navigation.PushAsync(new CheckItemPage(database, 0));

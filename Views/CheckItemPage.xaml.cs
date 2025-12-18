@@ -14,10 +14,24 @@ namespace DoorChecker
             BindingContext = viewModel;
         }
 
-        void OnSubmitClicked(Object sender, EventArgs e)
+        async void OnSubmitClicked(Object sender, EventArgs e)
         {
-            DisplayAlert("OK", "PDF generated successfully", "OK");
+            await DisplayAlert("Information", "Upload image", "OK");
+        }
+
+        async void OnSaveClicked(Object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
+        async void OnDeleteClicked(Object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
+        async void OnCancelClicked(Object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
-
 }
