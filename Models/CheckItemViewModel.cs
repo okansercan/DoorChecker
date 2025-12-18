@@ -7,6 +7,8 @@ namespace DoorChecker.Models
         private DoorCheckDatabase database;
 
         public int ID { get; set; }
+        public DateTime CheckDate { get; set; }
+        public string Username { get; set; }
         public int LocationID { get; set; }
         public int DoorID { get; set; }
         public bool Check1 { get; set; }
@@ -21,6 +23,12 @@ namespace DoorChecker.Models
         public bool Check10 { get; set; }
         public bool Check11 { get; set; }
         public bool Check12 { get; set; }
+        public byte[] ReaderIn { get; set; }
+        public byte[] ReaderOut { get; set; }
+        public byte[] Lock1 { get; set; }
+        public byte[] Lock2 { get; set; }
+        public byte[] BGU { get; set; }
+        public byte[] RTE { get; set; }
 
         public List<Location> Locations { get; set; }
         public List<Door> Doors { get; set; }
@@ -37,6 +45,8 @@ namespace DoorChecker.Models
             if (checkLogID == 0)
             {
                 await LoadCombos();
+                this.CheckDate = DateTime.Today;
+                this.Username = Environment.UserName;
                 return;
             }
 
@@ -45,6 +55,8 @@ namespace DoorChecker.Models
             var location = await database.GetLocationAsync(door.LocationID);
 
             this.ID = item.ID;
+            this.CheckDate = item.CheckDate;
+            this.Username = item.Username;
             this.LocationID = location.ID;
             this.DoorID = door.ID;
             this.Check1 = item.Check1;
@@ -59,6 +71,12 @@ namespace DoorChecker.Models
             this.Check10 = item.Check10;
             this.Check11 = item.Check11;
             this.Check12 = item.Check12;
+            this.ReaderIn = item.ReaderIn;
+            this.ReaderOut = item.ReaderOut;
+            this.Lock1 = item.Lock1;
+            this.Lock2 = item.Lock2;
+            this.BGU = item.BGU;
+            this.RTE = item.RTE;
 
             await LoadCombos();
         }
@@ -70,6 +88,11 @@ namespace DoorChecker.Models
             Locations = locations;
             Doors = doors;
 
+        }
+
+        public void AddOrUpdateCheckLog(CheckLog item)
+        {
+            Task.Run(() => database.SaveCheckLogAsync(item)).Wait();
         }
     }
 }
