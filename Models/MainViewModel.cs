@@ -1,16 +1,27 @@
-﻿namespace DoorChecker.Models
+﻿using DoorChecker.Data;
+
+namespace DoorChecker.Models
 {
     public class MainViewModel
     {
+        private DoorCheckDatabase database;
+
         public string Username { get; set; }
         public string Password { get; set; }
         public string ErrorText { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(DoorCheckDatabase database)
         {
             Username = string.Empty;
             Password = string.Empty;
             ErrorText = string.Empty;
+            this.database = database;
+            InitDatabase();
+        }
+
+        private async void InitDatabase()
+        {
+            await database.Init();
         }
 
         public bool Validate()

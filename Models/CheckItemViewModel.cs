@@ -60,15 +60,13 @@ namespace DoorChecker.Models
 
         }
 
-        private void LoadCombos()
+        private async void LoadCombos()
         {
-            var locations = database.GetLocationsAsync().Result;
-            var doors = database.GetDoorsByLocationAsync(Location).Result;
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                Locations = locations;
-                Doors = doors;
-            });
+            var locations = await database.GetLocationsAsync();
+            var doors = await database.GetDoorsByLocationAsync(Location);
+            Locations = locations;
+            Doors = doors;
+
         }
     }
 }

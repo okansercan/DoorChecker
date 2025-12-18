@@ -11,7 +11,7 @@ namespace DoorChecker
         public MainPage(DoorCheckDatabase database)
         {
             InitializeComponent();
-            viewModel = new MainViewModel();
+            viewModel = new MainViewModel(database);
             BindingContext = viewModel;
             this.database = database;
         }

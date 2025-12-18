@@ -1,4 +1,5 @@
-﻿using DoorChecker.Models;
+﻿using Android.OS;
+using DoorChecker.Models;
 using SQLite;
 
 namespace DoorChecker.Data
@@ -7,15 +8,15 @@ namespace DoorChecker.Data
     {
         SQLiteAsyncConnection database;
 
-        async Task Init()
+        public async Task Init()
         {
             if (database is not null)
                 return;
 
             database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-            var result = await database.CreateTableAsync<Models.Location>();
-            result = await database.CreateTableAsync<Door>();
-            result = await database.CreateTableAsync<CheckLog>();
+            await database.CreateTableAsync<Models.Location>();
+            await database.CreateTableAsync<Door>();
+            await database.CreateTableAsync<CheckLog>();
 
             InitLocations();
             InitDoors();
@@ -74,43 +75,36 @@ namespace DoorChecker.Data
 
         public async Task<List<Models.Location>> GetLocationsAsync()
         {
-            await Init();
             return await database.Table<Models.Location>().ToListAsync();
         }
 
         public async Task<Models.Location> GetLocationAsync(int id)
         {
-            await Init();
             return await database.Table<Models.Location>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         public async Task<List<Door>> GetDoorsByLocationAsync(int locationID)
         {
-            await Init();
             return await database.Table<Door>().Where(i => i.LocationID == locationID).ToListAsync();
         }
 
         public async Task<Door> GetDoorAsync(int id)
         {
-            await Init();
             return await database.Table<Door>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         public async Task<List<CheckLog>> GetCheckLogsAsync()
         {
-            await Init();
             return await database.Table<CheckLog>().ToListAsync();
         }
 
         public async Task<CheckLog> GetCheckLogAsync(int id)
         {
-            await Init();
             return await database.Table<CheckLog>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         public async Task<int> SaveCheckLogAsync(CheckLog item)
         {
-            await Init();
             if (item.ID != 0)
             {
                 return await database.UpdateAsync(item);
@@ -123,7 +117,6 @@ namespace DoorChecker.Data
 
         public async Task<int> DeleteCheckLogAsync(CheckLog item)
         {
-            await Init();
             return await database.DeleteAsync(item);
         }
     }
