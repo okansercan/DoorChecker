@@ -12,9 +12,11 @@
           Padding="10">
 
         <dx:DataGridView 
+            x:Name="dataGrid"
             ItemsSource="{Binding CheckItems}"
             Grid.Row="0" Grid.Column="0" 
             BackgroundColor="DarkBlue"
+            EditorShowMode="Never"
             SelectionMode="Single"
             SelectedItem="{Binding SelectedItem}">
             <dx:DataGridView.Columns>

@@ -19,6 +19,8 @@ namespace DoorChecker
         protected override async void OnNavigatedTo(NavigatedToEventArgs args)
         {
             base.OnNavigatedTo(args);
+            viewModel.RefreshData();
+            dataGrid.RefreshData();
         }
 
         void OnAddNewClicked(Object sender, EventArgs e)

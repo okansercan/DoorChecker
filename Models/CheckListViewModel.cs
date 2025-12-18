@@ -12,10 +12,9 @@ namespace DoorChecker.Models
         {
             CheckItems = new List<CheckItem>();
             this.database = database;
-            RefreshList();
         }
 
-        public void RefreshList()
+        public void RefreshData()
         {
             Task.Run(() => LoadCheckItems()).Wait();
         }
