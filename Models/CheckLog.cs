@@ -9,6 +9,7 @@ namespace DoorChecker.Models
         public DateTime CheckDate { get; set; }
         public string Username { get; set; }
         public int DoorID { get; set; }
+        public string ReaderType { get; set; }
         public bool Check1 { get; set; }
         public bool Check2 { get; set; }
         public bool Check3 { get; set; }

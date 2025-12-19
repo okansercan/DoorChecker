@@ -1,4 +1,5 @@
 ﻿using DoorChecker.Data;
+using static Android.Provider.CallLog;
 
 namespace DoorChecker.Models
 {
@@ -9,6 +10,7 @@ namespace DoorChecker.Models
         public int ID { get; set; }
         public DateTime CheckDate { get; set; }
         public string Username { get; set; }
+        public string ReaderType { get; set; }
         public int LocationID { get; set; }
         public int DoorID { get; set; }
         public bool Check1 { get; set; }
@@ -59,6 +61,7 @@ namespace DoorChecker.Models
             this.Username = item.Username;
             this.LocationID = location.ID;
             this.DoorID = door.ID;
+            this.ReaderType = item.ReaderType;
             this.Check1 = item.Check1;
             this.Check2 = item.Check2;
             this.Check3 = item.Check3;
@@ -93,6 +96,18 @@ namespace DoorChecker.Models
         public void AddOrUpdateCheckLog(CheckLog item)
         {
             Task.Run(() => database.SaveCheckLogAsync(item)).Wait();
+        }
+
+        public async Task RefreshDoors()
+        {
+            var doors = await database.GetDoorsByLocationAsync(LocationID);
+            Doors = doors;
+        }
+
+        public void DeleteCheckLog(int ID)
+        {
+            var item = Task.Run(() => database.GetCheckLogAsync(ID)).Result;
+            Task.Run(() => database.DeleteCheckLogAsync(item)).Wait();
         }
     }
 }

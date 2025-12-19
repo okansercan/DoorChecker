@@ -27,9 +27,11 @@
             VerticalOptions="Center"
             IsFilterEnabled="True"
             FilterCondition="Contains"
-            FilterComparisonType="CurrentCultureIgnoreCase"/>
+            FilterComparisonType="CurrentCultureIgnoreCase"
+            SelectionChanged="OnLocationChanged"/>
 
         <dx:ComboBoxEdit
+            x:Name="cmbDoor"
             Grid.Row="0" 
             Grid.Column="1" 
             LabelText="Select a door"
@@ -50,7 +52,7 @@
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2"
               RowDefinitions="Auto"
-              ColumnDefinitions="Auto, Auto, Auto"
+              ColumnDefinitions=".20*, .15*, .15*, .50*"
               Padding="10">
             
             <Label 
@@ -60,16 +62,36 @@
                 VerticalTextAlignment="Center" />
             
             <RadioButton 
+                x:Name="rbProx"
                 Grid.Column="1"
                 Content="Prox" 
                 GroupName="reader"
-                TextColor="White"/>
+                TextColor="White"
+                BorderColor="White"
+                CheckedChanged="OnReaderChanged"/>
             
             <RadioButton 
+                x:Name="rbPin"
                 Grid.Column="2"
                 Content="Pin" 
                 GroupName="reader"
-                TextColor="White"/>
+                TextColor="White"
+                BorderColor="White"
+                CheckedChanged="OnReaderChanged"/>
+
+            <dx:DateEdit
+                Grid.Column="3"
+                Date="{Binding CheckDate}"
+                TextColor="White"
+                LabelColor="White"
+                PlaceholderColor="White"
+                LabelText="Check date"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                IsDateIconVisible="False"
+                ClearIconVisibility="Auto"
+                DisplayFormat="d"
+                PlaceholderText="Enter check date"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2"
@@ -244,7 +266,7 @@
             <dx:DXButton 
                 Grid.Row="0" Grid.Column="0"
                 Margin="0,10,0,0"
-                Content="Update"
+                Content="Save"
                 Clicked="OnSaveClicked"
                 FontAttributes="Bold"
                 BackgroundColor="White"

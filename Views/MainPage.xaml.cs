@@ -21,7 +21,7 @@ namespace DoorChecker
             if (!viewModel.Validate())
                 DisplayAlert("HATA", viewModel.ErrorText, "TAMAM");
             else
-                Navigation.PushAsync(new CheckListPage(database));
+                Navigation.PushAsync(new CheckListPage(database, viewModel.Username));
         }
     }
 

@@ -6,17 +6,43 @@ namespace DoorChecker
     public partial class CheckItemPage : ContentPage
     {
         readonly CheckItemViewModel viewModel;
+        private string Username;
 
-        public CheckItemPage(DoorCheckDatabase database, int checkLogID)
+        public CheckItemPage(DoorCheckDatabase database, string username, int checkLogID)
         {
             InitializeComponent();
             viewModel = new CheckItemViewModel(database, checkLogID);
             BindingContext = viewModel;
+            this.Username = username;
+            SetReaderType();
+        }
+
+        private void SetReaderType()
+        {
+            if (viewModel.ReaderType == "PIN")
+                rbPin.IsChecked = true;
+            else if (viewModel.ReaderType == "PROX")
+                rbProx.IsChecked = true;
+        }
+
+        async void OnLocationChanged(Object sender, EventArgs e)
+        {
+            await viewModel.RefreshDoors();
+            cmbDoor.ItemsSource = viewModel.Doors;
+            cmbDoor.SelectedIndex = 0;
         }
 
         async void OnSubmitClicked(Object sender, EventArgs e)
         {
             await DisplayAlert("Information", "Upload image", "OK");
+        }
+
+        async void OnReaderChanged(Object sender, EventArgs e)
+        {
+            if (rbPin.IsChecked)
+                viewModel.ReaderType = "PIN";
+            else if (rbProx.IsChecked)
+                viewModel.ReaderType = "PROX";
         }
 
         async void OnSaveClicked(Object sender, EventArgs e)
@@ -31,7 +57,8 @@ namespace DoorChecker
             {
                 ID = viewModel.ID,
                 CheckDate = viewModel.CheckDate,
-                Username = viewModel.Username,
+                Username = this.Username,
+                ReaderType = viewModel.ReaderType,
                 DoorID = viewModel.DoorID,
                 Check1 = viewModel.Check1,
                 Check2 = viewModel.Check2,
@@ -58,6 +85,11 @@ namespace DoorChecker
 
         async void OnDeleteClicked(Object sender, EventArgs e)
         {
+            bool answer = await DisplayAlert("Confirmation", "Are you sure to delete this check log?", "Yes", "No");
+
+            if (answer)
+                viewModel.DeleteCheckLog(viewModel.ID);
+
             await Shell.Current.GoToAsync("..");
         }
 

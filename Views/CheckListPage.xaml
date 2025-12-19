@@ -66,6 +66,16 @@
                 BackgroundColor="White"
                 TextColor="DarkBlue"
                 HorizontalOptions="Fill"/>
+
+            <dx:DXButton 
+                Grid.Row="2" Grid.Column="0"
+                Margin="0,10,0,0"
+                Content="Logout"
+                Clicked="OnLogoutClicked"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                TextColor="DarkBlue"
+                HorizontalOptions="Fill"/>
         </Grid>
     </Grid>
 </ContentPage>

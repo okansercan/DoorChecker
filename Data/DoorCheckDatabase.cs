@@ -20,7 +20,6 @@ namespace DoorChecker.Data
 
             InitLocations();
             InitDoors();
-            InitCheckLogs();
         }
 
         private async void InitLocations()
@@ -50,8 +49,11 @@ namespace DoorChecker.Data
                 new Door() { Name = "Door H2", LocationID = 1 },
                 new Door() { Name = "Door W1", LocationID = 2 },
                 new Door() { Name = "Door W2", LocationID = 2 },
+                new Door() { Name = "Door W3", LocationID = 2 },
                 new Door() { Name = "Door RO1", LocationID = 3 },
-                new Door() { Name = "Door RO2", LocationID = 3 }
+                new Door() { Name = "Door RO2", LocationID = 3 },
+                new Door() { Name = "Door RO3", LocationID = 3 },
+                new Door() { Name = "Door RO4", LocationID = 3 }
             };
 
             foreach (var door in doors)
