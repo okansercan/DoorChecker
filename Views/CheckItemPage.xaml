@@ -197,67 +197,127 @@
 
         <Grid Grid.Row="3" Grid.ColumnSpan="2"
               RowDefinitions=".50*, .50*"
-              ColumnDefinitions=".30*, .30*, .30*">
+              ColumnDefinitions=".15*, .15*, .15*, .15*, .15*, .15*">
 
             <dx:DXButton 
                 Grid.Row="0" Grid.Column="0"
                 Margin="0,10,0,0"
                 Content="Reader In"
-                Clicked="OnSubmitClicked"
+                Clicked="OnReaderInClicked"
                 FontAttributes="Bold"
                 BackgroundColor="DarkRed"
                 TextColor="White"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
 
-            <dx:DXButton 
+            <Image 
+                x:Name="imgReaderIn"
                 Grid.Row="0" Grid.Column="1"
                 Margin="0,10,0,0"
-                Content="Lock 1"
-                Clicked="OnSubmitClicked"
-                FontAttributes="Bold"
-                BackgroundColor="DarkRed"
-                TextColor="White"
-                HorizontalOptions="Start"/>
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
 
             <dx:DXButton 
                 Grid.Row="0" Grid.Column="2"
                 Margin="0,10,0,0"
-                Content="BGU"
-                Clicked="OnSubmitClicked"
+                Content="Lock 1"
+                Clicked="OnLock1Clicked"
                 FontAttributes="Bold"
                 BackgroundColor="DarkRed"
                 TextColor="White"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <Image 
+                x:Name="imgLock1"
+                Grid.Row="0" Grid.Column="3"
+                Margin="0,10,0,0"
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+
+            <dx:DXButton 
+                Grid.Row="0" Grid.Column="4"
+                Margin="0,10,0,0"
+                Content="BGU"
+                Clicked="OnBguClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <Image 
+                x:Name="imgBGU"
+                Grid.Row="0" Grid.Column="5"
+                Margin="0,10,0,0"
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
 
             <dx:DXButton 
                 Grid.Row="1" Grid.Column="0"
                 Margin="0,10,0,0"
                 Content="Reader Out"
-                Clicked="OnSubmitClicked"
+                Clicked="OnReaderOutClicked"
                 FontAttributes="Bold"
                 BackgroundColor="DarkRed"
                 TextColor="White"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
 
-            <dx:DXButton 
+            <Image 
+                x:Name="imgReaderOut"
                 Grid.Row="1" Grid.Column="1"
                 Margin="0,10,0,0"
-                Content="Lock 2"
-                Clicked="OnSubmitClicked"
-                FontAttributes="Bold"
-                BackgroundColor="DarkRed"
-                TextColor="White"
-                HorizontalOptions="Start"/>
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
 
             <dx:DXButton 
                 Grid.Row="1" Grid.Column="2"
                 Margin="0,10,0,0"
-                Content="RTE"
-                Clicked="OnSubmitClicked"
+                Content="Lock 2"
+                Clicked="OnLock2Clicked"
                 FontAttributes="Bold"
                 BackgroundColor="DarkRed"
                 TextColor="White"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <Image 
+                x:Name="imgLock2"
+                Grid.Row="1" Grid.Column="3"
+                Margin="0,10,0,0"
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+
+            <dx:DXButton 
+                Grid.Row="1" Grid.Column="4"
+                Margin="0,10,0,0"
+                Content="RTE"
+                Clicked="OnRteClicked"
+                FontAttributes="Bold"
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <Image 
+                x:Name="imgRTE"
+                Grid.Row="1" Grid.Column="5"
+                Margin="0,10,0,0"
+                HeightRequest="40"
+                Source="no_entry.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
         </Grid>
         
         <Grid Grid.Row="4" Grid.Column="1"
